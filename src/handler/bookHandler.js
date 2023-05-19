@@ -137,7 +137,7 @@ const deleteBook = async (request, h) => {
 
   // delete buku
   Books.splice(bookIndex, 1);
-  return setResponse(h, 'success', 200, request.params.bookId, 'Buku berhasil dihapus');
+  return setResponse(h, 'success', 200, 'Buku berhasil dihapus', 'none');
 };
 
 export {
