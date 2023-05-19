@@ -17,12 +17,12 @@ const addBook = async (request, h) => {
 
   // validasi 1
   if (!name) {
-    return setResponse(h, 'failed', 400, 'Gagal menambahkan buku. Mohon isi nama buku');
+    return setResponse(h, 'fail', 400, 'Gagal menambahkan buku. Mohon isi nama buku');
   }
 
   // validasi 2
   if (readPage > pageCount) {
-    return setResponse(h, 'failed', 400, 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount');
+    return setResponse(h, 'fail', 400, 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount');
   }
 
   const newBook = {
@@ -48,7 +48,7 @@ const addBook = async (request, h) => {
   if (isCreated) {
     return setResponse(h, 'success', 201, 'Buku berhasil ditambahkan', { bookId: newBook.id });
   }
-  return setResponse(h, 'failed', 500, 'Gagal menambahkan buku', 'error');
+  return setResponse(h, 'fail', 500, 'Gagal menambahkan buku', 'error');
 };
 
 const getAllBook = async (request, h) => {
@@ -72,7 +72,7 @@ const getByIdBook = async (request, h) => {
   if (result.length > 0) {
     return setResponse(h, 'success', 200, `Berhasil menampilkan buku dengan ID '${bookId}`, { book: result[0] });
   }
-  return setResponse(h, 'failed', 404, 'Buku tidak ditemukan');
+  return setResponse(h, 'fail', 404, 'Buku tidak ditemukan');
 };
 
 const updateBook = async (request, h) => {
@@ -94,17 +94,17 @@ const updateBook = async (request, h) => {
 
   // validasi 1
   if (!name) {
-    return setResponse(h, 'failed', 400, 'Gagal memperbarui buku. Mohon isi nama buku');
+    return setResponse(h, 'fail', 400, 'Gagal memperbarui buku. Mohon isi nama buku');
   }
 
   // validasi 2
   if (readPage > pageCount) {
-    return setResponse(h, 'failed', 400, 'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount');
+    return setResponse(h, 'fail', 400, 'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount');
   }
 
   // validasi 3
   if (index === -1) {
-    return setResponse(h, 'failed', 404, 'Gagal memperbarui buku. Id tidak ditemukan');
+    return setResponse(h, 'fail', 404, 'Gagal memperbarui buku. Id tidak ditemukan');
   }
 
   // update buku
@@ -132,7 +132,7 @@ const deleteBook = async (request, h) => {
 
   // validasi 1
   if (bookIndex === -1) {
-    return setResponse(h, 'failed', 404, 'Buku gagal dihapus. Id tidak ditemukan');
+    return setResponse(h, 'fail', 404, 'Buku gagal dihapus. Id tidak ditemukan');
   }
 
   // delete buku

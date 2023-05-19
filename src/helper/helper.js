@@ -6,7 +6,7 @@ const setFormat = (books) => books.map(({
 }) => ({ id, name, publisher }));
 
 // Helper untuk memformat response
-const setResponse = (hapi, status = 'failed', code = 200, message = 'Request processed successfully.', data = null) => {
+const setResponse = (hapi, status = 'fail', code = 200, message = 'Request processed successfully.', data = null) => {
   if (status === 'success') {
     return hapi.response({ status, message, data }).code(code);
   }
